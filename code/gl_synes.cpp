@@ -9,6 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "synesthetic.h"
+#include "audio_engine.cpp"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 800
@@ -72,4 +73,4 @@ void ProcessInput(application_state* state)
 		state->running = false;
 	}
 	
-}!
+}
