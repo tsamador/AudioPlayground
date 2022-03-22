@@ -1,9 +1,6 @@
 
-
 #include "audio_engine.h"
-#include <audioclient.h>
-#include <audiopolicy.h>
-#include <mmdeviceapi.h>
+
 
 #define REFTIMES_PER_SEC  10000000
 #define REFTIMES_PER_MILLISEC  10000
@@ -63,7 +60,7 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream)
     EXIT_ON_ERROR(hr)
 
     // Tell the audio source which format to use.
-    hr = pMySource->SetFormat(pwfx);
+    hr = AudioStream->SetFormat(pwfx);
     EXIT_ON_ERROR(hr)
 
     // Get the actual size of the allocated buffer.
@@ -80,7 +77,7 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream)
     EXIT_ON_ERROR(hr)
 
     // Load the initial data into the shared buffer.
-    hr = pMySource->LoadData(bufferFrameCount, pData, &flags);
+    hr = AudioStream->LoadData(bufferFrameCount, pData, &flags);
     EXIT_ON_ERROR(hr)
 
     hr = pRenderClient->ReleaseBuffer(bufferFrameCount, flags);
@@ -110,7 +107,7 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream)
         EXIT_ON_ERROR(hr)
 
         // Get next 1/2-second of data from the audio source.
-        hr = pMySource->LoadData(numFramesAvailable, pData, &flags);
+        hr = AudioStream->LoadData(numFramesAvailable, pData, &flags);
         EXIT_ON_ERROR(hr)
 
         hr = pRenderClient->ReleaseBuffer(numFramesAvailable, flags);

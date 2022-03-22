@@ -3,13 +3,12 @@
 
 #include "..\lib\glad\glad.h"
 #include "..\lib\GLFW\glfw3.h"
-#include <xaudio2.h>
 #include <stdio.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "synesthetic.h"
-#include "audio_engine.cpp"
+#include "audio_engine.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 800

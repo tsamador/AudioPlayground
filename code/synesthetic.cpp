@@ -11,6 +11,9 @@ void SynestheticMainLoop()
 	application_state state;
 	state.running = true;
 
+	sound_buffer audioStream;
+	PlayAudioStream(&audioStream);
+
 	while(state.running)
 	{
 		Render();
