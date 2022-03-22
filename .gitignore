@@ -1,0 +1,7 @@
+
+build/.vs/gl_synes/v16/ipch/AutoPCH/bb9e7499da285c5c/GL_SYNES.ipch
+build/.vs/gl_synes/v16/Browse.VC.db
+*.db-shm
+*.db-wal
+*.opendb
+*.ipch
