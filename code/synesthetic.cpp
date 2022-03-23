@@ -1,8 +1,8 @@
- 
+
 
 #include "synesthetic.h"
 #include "gl_synes.h"
-
+#include <thread>
 
 
 
@@ -12,7 +12,9 @@ void SynestheticMainLoop()
 	state.running = true;
 
 	sound_buffer audioStream;
-	PlayAudioStream(&audioStream);
+	
+	std::thread audio_thread(PlayAudioStream, &audioStream, &state);
+	//PlayAudioStream(&audioStream);
 
 	while(state.running)
 	{
@@ -21,4 +23,6 @@ void SynestheticMainLoop()
 		ProcessInput(&state);
 		
 	}
+
+	audio_thread.join();
 }

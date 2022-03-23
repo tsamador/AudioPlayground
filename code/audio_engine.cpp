@@ -16,7 +16,8 @@ const IID IID_IMMDeviceEnumerator = __uuidof(IMMDeviceEnumerator);
 const IID IID_IAudioClient = __uuidof(IAudioClient);
 const IID IID_IAudioRenderClient = __uuidof(IAudioRenderClient);
 
-HRESULT PlayAudioStream(sound_buffer* AudioStream)
+
+HRESULT PlayAudioStream(sound_buffer* AudioStream, application_state* state)
 {
 	HRESULT hr;
     REFERENCE_TIME hnsRequestedDuration = REFTIMES_PER_SEC;
@@ -31,6 +32,10 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream)
     UINT32 numFramesPadding;
     BYTE *pData;
     DWORD flags = 0;
+
+    timeBeginPeriod(1); //Temp Fix, Will want to switch how it's sleeping in loop below
+
+    CoInitializeEx(0, COINIT_MULTITHREADED);
 
     hr = CoCreateInstance(
            CLSID_MMDeviceEnumerator, NULL,
@@ -91,7 +96,7 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream)
     EXIT_ON_ERROR(hr)
 
     // Each loop fills about half of the shared buffer.
-    while (flags != AUDCLNT_BUFFERFLAGS_SILENT)
+    while(state->running)
     {
         // Sleep for half the buffer duration.
         Sleep((DWORD)(hnsActualDuration/REFTIMES_PER_MILLISEC/2));

@@ -3,11 +3,7 @@
 
 #include "sound_buffer.h"
 #include "audio_engine.h"
-
-struct application_state
-{
-	bool running;
-};
+#include "application_state.h"
 
 void SynestheticMainLoop();
 
