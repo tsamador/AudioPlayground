@@ -14,7 +14,7 @@ void SynestheticMainLoop()
 	sound_buffer audioStream;
 	
 	std::thread audio_thread(PlayAudioStream, &audioStream, &state);
-	//PlayAudioStream(&audioStream);
+	
 
 	while(state.running)
 	{

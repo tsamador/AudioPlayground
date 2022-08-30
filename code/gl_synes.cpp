@@ -1,6 +1,4 @@
 
-
-
 #include "..\lib\glad\glad.h"
 #include "..\lib\GLFW\glfw3.h"
 #include <stdio.h>
@@ -13,14 +11,12 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 800
 
-
 GLFWwindow* window;
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0,0, width, height);
 }
-
 
 int main()
 {
@@ -46,13 +42,8 @@ int main()
 		return -1;
 	}
 
-	/* Initialize XAudio */
-	
-
 	SynestheticMainLoop();
-
 	
-
 	puts("Hello World!");
 	return 1;
 }
