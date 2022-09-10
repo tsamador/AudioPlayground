@@ -25,6 +25,9 @@ HRESULT PlayAudioStream(sound_buffer* AudioStream, application_state* state)
     BYTE *sharedBuffer;
     DWORD flags = 0;
 
+    //Increases granularity of the windows scheduler
+    timeBeginPeriod(1);
+    
     REFERENCE_TIME hnsActualDuration = REFTIMES_PER_SEC;
 
     audio_stream_attributes AudioClient = InitAudioEngine();
